@@ -11,7 +11,7 @@ export const Home = () => {
 
     const fetchTodos = async () => {
         try {
-            const response = await axios.get('http://ec2-34-228-58-86.compute-1.amazonaws.com:8080/api/todos');
+            const response = await axios.get('http://localhost:8080/api/todos');
             setTodos(response.data);
         } catch (error) {
             console.error('Error fetching todos:', error);
@@ -21,7 +21,7 @@ export const Home = () => {
     const createTodo = async () => {
         const todo={title}
         try {
-            const response = await axios.post('http://ec2-34-228-58-86.compute-1.amazonaws.com:8080/api/todos', todo);
+            const response = await axios.post('http://localhost:8080/api/todos', todo);
             setTodos([...todos, response.data]);
         } catch (error) {
             console.error('Error creating todo:', error);
@@ -30,7 +30,7 @@ export const Home = () => {
 
     const deleteTodo = async (id) => {
         try {
-            await axios.delete(`http://ec2-34-228-58-86.compute-1.amazonaws.com:8080/api/todos/${id}`);
+            await axios.delete(`http://localhost:8080/api/todos/${id}`);
             setTodos(todos.filter(todo => todo.id !== id));
         } catch (error) {
             console.error('Error deleting todo:', error);
